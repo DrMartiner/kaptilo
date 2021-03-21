@@ -152,6 +152,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "apps.api.authentications.CsrfExemptSessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
     ],
 }
 
