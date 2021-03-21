@@ -15,13 +15,12 @@ logger = logging.getLogger("django.requests")
 
 
 class LinkViewSet(SerializerViewSetMixin, viewsets.ModelViewSet):
+    http_method_names = ["post", "get"]
     queryset = models.Link.objects.all()
     serializer_class_map = {
         'create': serializers.LinkCreateSerializer,
         'list': serializers.LinkListSerializer,
         'retrieve': serializers.LinkRetrieveSerializer,
-        'update': serializers.LinkUpdateSerializer,
-        'partial_update': serializers.LinkUpdateSerializer,
     }
     permission_classes = [LinkPermission]
 
