@@ -24,5 +24,8 @@ class LinkViewSet(SerializerViewSetMixin, viewsets.ModelViewSet):
     }
     permission_classes = [LinkPermission]
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
     def get_queryset(self):
         return super(LinkViewSet, self).get_queryset().filter(user=self.request.user)

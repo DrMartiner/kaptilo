@@ -9,6 +9,7 @@ class LinkCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Link
         fields = "__all__"
+        read_only_fields = ["uuid", "user", "visited_count", "created"]
 
 
 class LinkListSerializer(serializers.ModelSerializer):
