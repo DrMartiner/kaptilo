@@ -10,7 +10,7 @@ User = get_user_model()
 class Command(BaseCommand):
     def handle(self, *args, **options):
         updater = Updater(settings.TELEGRAM_TOKEN)
-        updater.dispatcher.add_handler(CommandHandler("auth", make_aut))
+        updater.dispatcher.add_handler(CommandHandler("auth", self.make_aut))
 
         updater.start_polling()
         updater.idle()
