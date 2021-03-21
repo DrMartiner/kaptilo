@@ -36,6 +36,7 @@ class Link(models.Model):
 class Visit(models.Model):
     link = models.ForeignKey("Link", models.CASCADE)
     visitor_data = models.JSONField(_("Visitor data"), default=dict, null=True, blank=True)
+    real_ip = models.GenericIPAddressField()
 
     created = models.DateTimeField(auto_now_add=True)
 
