@@ -20,6 +20,7 @@ env = environ.Env(
     ROLE=(str, "prod"),
     RECAPTCHA_PUBLIC_KEY=(str, None),
     RECAPTCHA_PRIVATE_KEY=(str, None),
+    MAX_VISITED_COUNT=(int, 5),
 )
 
 ini_file_path = root(".env")
@@ -31,6 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROLE = env("ROLE")
 
 CUTTLY_API_KEY = env("CUTTLY_API_KEY")
+MAX_VISITED_COUNT = env("MAX_VISITED_COUNT")
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
