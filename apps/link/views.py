@@ -1,8 +1,10 @@
+import requests
 from django.conf import settings
-from django.db import transaction, IntegrityError
-from django.db.models import F, When, Case, Q
+from django.db import transaction
+from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import RedirectView
+from ipware import get_client_ip
 
 from apps.link.models import Link, Visit
 
@@ -17,16 +19,12 @@ class OriginalLinkRedirectView(RedirectView):
         link: Link = get_object_or_404(Link, pk=kwargs['uuid'])
 
         with transaction.atomic():
-            conditions = Q(uuid=kwargs['uuid']) & Q(visited_count__lte=settings.MAX_VISITED_COUNT)
-            try:
-                updated_count = Link.objects.update(visited_count=Case(When(conditions, F("visited_count") + 1), default=F("visited_count")))
-            except IntegrityError as e:
-                updated_count = 0
-            except Exception as e:
-                raise e
+            if link.visited_count <= settings.MAX_VISITED_COUNT:
+                real_ip, is_routable = get_client_ip(self.request)
+                response = requests.get(f"https://ipinfo.io/{real_ip}?token={settings.IPINFO_TOKEN}")
 
-        if updated_count > 0:
-            # TODO: to save the user data
-            Visit.objects.create(link=link, visitor_data={})
+                Visit.objects.create(link=link, visitor_data=response.json(), real_ip=real_ip)
+
+                Link.objects.filter(uuid=kwargs['uuid']).update(visited_count=F("visited_count") + 1)
 
         return link.original_link
