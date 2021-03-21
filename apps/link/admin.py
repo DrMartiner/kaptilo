@@ -29,6 +29,6 @@ class LinkAdmin(admin.ModelAdmin):
 
 @admin.register(models.Visit)
 class VisitAdmin(admin.ModelAdmin):
-    list_display = ["id", "link", "count", "created"]
+    list_display = ["id", "link", "created"]
     list_filter = ["created"]
     search_fields = ["link__uuid", "link__original_link"]

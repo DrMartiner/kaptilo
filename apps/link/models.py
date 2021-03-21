@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext as _
 
-__all__ = ["Link"]
+__all__ = ["Link", "Visit"]
 
 
 def get_short_link_uuid() -> str:
@@ -17,6 +17,7 @@ class Link(models.Model):
     uuid = models.CharField(_("Uniq ID"), max_length=8, primary_key=True, default=get_short_link_uuid)
     user = models.ForeignKey(User, models.CASCADE, verbose_name=_("User"))
     original_link = models.URLField(_("Link"), max_length=1024)
+    visited_count = models.PositiveIntegerField(_("Visited count"), default=0, blank=True, null=True)
 
     created = models.DateTimeField("Creation date", auto_now_add=True)
 
@@ -35,7 +36,6 @@ class Link(models.Model):
 class Visit(models.Model):
     link = models.ForeignKey("Link", models.CASCADE)
     visitor_data = models.JSONField(_("Visitor data"), default=dict, null=True, blank=True)
-    count = models.IntegerField(_("Visited count"), default=0)
 
     created = models.DateTimeField(auto_now_add=True)
 
