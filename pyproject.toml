@@ -25,11 +25,34 @@ pre-commit = "^2.11.1"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"
-black = {version = "^19.10b0", allow-prereleases = true}
-isort = "^4.3"
+black = "^20.8b1"
+isort = "^5.7.0"
 django-dynamic-fixture = "^3.1.1"
 requests-mock = "^1.8.0"
+pre-commit = "^2.10.1"
+autoflake = "^1.4"
+seed-isort-config = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+py_version = 38
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+sections = "STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+known_django = "django"
+known_first_party = "apps"
+known_third_party = "dj_database_url,django,environ"
+
+[tool.black]
+line-length = 120
+exclude = '''
+/(
+  \.git
+  | tmp/
+  | data/
+)/
+'''
