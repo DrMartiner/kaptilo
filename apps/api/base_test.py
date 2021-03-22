@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import RequestFactory
+
 from rest_framework.test import APITestCase
 
 from apps.common.base_test import BaseTest

@@ -10,14 +10,16 @@ User: BaseUser = get_user_model()
 class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("-u", "--username", default="admin", type=str, help="New user username")
-        parser.add_argument("-e", "--email", default="admin@example.com", type=str, help="New user email")
+        parser.add_argument(
+            "-e", "--email", default="admin@example.com", type=str, help="New user email",
+        )
         parser.add_argument("-p", "--password", default="admin", type=str, help="New user password")
         parser.add_argument("-r", "--random-password", action="store_true", help="Use random password")
 
     def handle(self, *args, **options):
         try:
             user = User.objects.create(
-                username=options["username"], email=options["email"], is_superuser=True, is_staff=True
+                username=options["username"], email=options["email"], is_superuser=True, is_staff=True,
             )
 
             if options["random_password"]:
@@ -29,6 +31,8 @@ class Command(BaseCommand):
             user.set_password(password)
             user.save()
         except IntegrityError:
-            self.stdout.write(f'Username "{options["username"]}" is already exists', self.style.WARNING)
+            self.stdout.write(
+                f'Username "{options["username"]}" is already exists', self.style.WARNING,
+            )
         except Exception as e:
             raise CommandError(str(e))

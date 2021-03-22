@@ -11,7 +11,7 @@ admin.site.site_title = "Kaptilo"
 admin.site.index_title = "Welcome to Kaptilo admin-panel"
 
 urlpatterns = [
-    path('<str:uuid>/', OriginalLinkRedirectView.as_view(), name='original-link-redirect'),
+    path("<str:uuid>/", OriginalLinkRedirectView.as_view(), name="original-link-redirect"),
     path("api/v1/", include(("apps.api.urls", "apps.api"), namespace="api_v1")),
     path("admin/super-sec/", admin.site.urls),
     path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),

@@ -14,7 +14,7 @@ class UserAdmin(UserAdmin):
         (_("Telegram"), {"fields": ("telegram_auth_uuid", "telegram_chat_id")}),
         (
             _("Permissions"),
-            {"fields": ("role", "is_active", "is_staff", "is_superuser", "groups", "user_permissions")},
+            {"fields": ("role", "is_active", "is_staff", "is_superuser", "groups", "user_permissions",)},
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )

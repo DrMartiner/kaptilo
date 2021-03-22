@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.management import BaseCommand
-from telegram import Update, Bot
+
+from telegram import Bot, Update
 from telegram.ext import CommandHandler, Updater
 
 User = get_user_model()

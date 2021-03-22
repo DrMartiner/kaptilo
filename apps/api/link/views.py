@@ -2,9 +2,9 @@ import logging
 
 from rest_framework import viewsets
 
+from apps.api.views import SerializerViewSetMixin
 from apps.link import models
 
-from apps.api.views import SerializerViewSetMixin
 from . import serializers
 from .permissions import LinkPermission
 
@@ -18,9 +18,9 @@ class LinkViewSet(SerializerViewSetMixin, viewsets.ModelViewSet):
     http_method_names = ["post", "get"]
     queryset = models.Link.objects.all()
     serializer_class_map = {
-        'create': serializers.LinkCreateSerializer,
-        'list': serializers.LinkListSerializer,
-        'retrieve': serializers.LinkRetrieveSerializer,
+        "create": serializers.LinkCreateSerializer,
+        "list": serializers.LinkListSerializer,
+        "retrieve": serializers.LinkRetrieveSerializer,
     }
     permission_classes = [LinkPermission]
 
