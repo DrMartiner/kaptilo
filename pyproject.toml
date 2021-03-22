@@ -21,13 +21,13 @@ django-dramatiq = "^0.10.0"
 redis = "^3.5.3"
 python-telegram-bot = "^13.4.1"
 django-cors-headers = "^3.7.0"
+pre-commit = "^2.11.1"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"
 black = {version = "^19.10b0", allow-prereleases = true}
 isort = "^4.3"
 django-dynamic-fixture = "^3.1.1"
-pre-commit-hooks = "^3.4.0"
 requests-mock = "^1.8.0"
 
 [build-system]
