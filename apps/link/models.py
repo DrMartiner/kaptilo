@@ -2,9 +2,13 @@ import random
 import string
 
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext as _
+
+from apps.users.models import User as UserModel
+
+User: UserModel = get_user_model()
 
 __all__ = ["Link", "Visit"]
 
