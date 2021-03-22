@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'apps.api.apps.ApiConfig',
     'apps.common.apps.CommonConfig',
     'apps.link.apps.LinkConfig',
+    'apps.users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -167,6 +168,8 @@ DRAMATIQ_BROKER = {
         "django_dramatiq.middleware.DbConnectionsMiddleware",
     ]
 }
+
+AUTH_USER_MODEL = "users.User"
 
 if ROLE == "test":
 
