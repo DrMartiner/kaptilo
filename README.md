@@ -38,6 +38,19 @@ open https://domain.com:8000/admin/sec/
 ```
 
 # Develop
+### Project structure
+```text
+- manage.py
+- apps/
+    - api/
+    - common/
+    - links/
+    - users/
+- project/
+    - settings.py
+    - urls.py
+```
+
 ### Before beginning
 - execute `pre-commit install` to install pre-commit hooks
 
