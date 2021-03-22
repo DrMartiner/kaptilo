@@ -221,6 +221,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "django-cors-headers"
+version = "3.7.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[[package]]
 name = "django-dramatiq"
 version = "0.10.0"
 description = "A Django app for Dramatiq."
@@ -628,7 +639,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 name = "requests-mock"
 version = "1.8.0"
 description = "Mock out responses from the requests package"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -808,7 +819,7 @@ brotli = ["brotlipy (>=0.6.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5b7653cf8f7f318c19ad3c910e6329a9152900a7401be0b290f6ea4ac9976b31"
+content-hash = "86fe0f81261589b4d57236296a527381c4489d715388756b76c27e7771a07def"
 
 [metadata.files]
 appdirs = [
@@ -922,6 +933,10 @@ django = [
 django-admin-honeypot = [
     {file = "django-admin-honeypot-1.1.0.tar.gz", hash = "sha256:e18a52832b82740917737873c6f34117d15631565e9e4b7dbb9df48a29250796"},
     {file = "django_admin_honeypot-1.1.0-py2.py3-none-any.whl", hash = "sha256:88e72753f5cbda88d909292d9f3fe7741fb74a8afad083f96e86114238f9b364"},
+]
+django-cors-headers = [
+    {file = "django-cors-headers-3.7.0.tar.gz", hash = "sha256:96069c4aaacace786a34ee7894ff680780ec2644e4268b31181044410fecd12e"},
+    {file = "django_cors_headers-3.7.0-py3-none-any.whl", hash = "sha256:1ac2b1213de75a251e2ba04448da15f99bcfcbe164288ae6b5ff929dc49b372f"},
 ]
 django-dramatiq = [
     {file = "django_dramatiq-0.10.0-py3-none-any.whl", hash = "sha256:4fa375f96f9aa56f15568c9a7b9229220373a42ef1624af5eabd346d74cf8779"},
