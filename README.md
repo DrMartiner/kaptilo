@@ -7,7 +7,6 @@ pyenv activate kaptilo
 pip install poetry
 poetry install
 ``` 
-- to install pre-commit hooks execute it: `pre-commit install`
 - copy .env file `cp .env.dev .env` or export to envs:
 ```bash
 export IPINFO_TOKEN=...
@@ -37,3 +36,12 @@ docker-compose run back collectstatic
 docker-compose exec back ./manage.py create_super_user --username admin --password sup-pass-123
 open https://domain.com:8000/admin/sec/
 ```
+
+# Develop
+### Before beginning
+- execute `pre-commit install` to install pre-commit hooks
+
+### Before make a commit
+- if you install a lib, execute `make update-isort`
+- execute `make lint` to call lints
+ 
